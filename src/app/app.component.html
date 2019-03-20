@@ -1,21 +1,28 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div style="height: 100vh;">
+  <mat-drawer-container style="height: 100%;">
+    <mat-drawer [opened]="menuOpen" mode="side" style="height: 100%">
+      <div style="height: 100px; display: flex; flex-direction: column; justify-content: center; align-items: center">
+        <p>Logo is here</p>
+        <mat-icon>home</mat-icon>
+      </div>
+      <mat-nav-list>
+        <a mat-list-item>Search</a>
+        <a mat-list-item>Top 10 players</a>
+        <a mat-list-item>Manually calculate RBI </a>
+      </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      <div class="nav-bar">
+        <button mat-button style="background-color: #fff; margin: 4px; color: #555555;" (click)="toggleMenu()">
+          <mat-icon>reorder</mat-icon>
+        </button>
+        <div style="position: absolute; right: 20px; color: #fff;">
+          <p>Put whatever here for main menu</p>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
 </div>
-<h2>I changed this line </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
-<router-outlet></router-outlet>
