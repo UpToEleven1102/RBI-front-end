@@ -19,4 +19,4 @@ deploy:
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   script:
     - server=$SERVER
-    - ssh ubuntu@${server} "cd ~/RBI-front-end && git checkout . && git pull origin master && npm i && npm start"
+    - ssh ubuntu@${server} "cd ~/RBI-front-end && git checkout . && git pull origin master && npm i && ng serve --port 8100"
