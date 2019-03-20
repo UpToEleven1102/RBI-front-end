@@ -7,16 +7,22 @@ import { AppComponent } from './app.component';
 import {MatButtonModule, MatIconModule, MatListModule, MatSidenavModule} from '@angular/material';
 import {RouterModule, Routes} from '@angular/router';
 import { HomePageComponent } from './Pages/home-page/home-page.component';
+import { TopPlayersComponent } from './Pages/top-players/top-players.component';
+import { CalculateRbiComponent } from './Pages/calculate-rbi/calculate-rbi.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomePageComponent},
+  { path: 'top-players', component: TopPlayersComponent},
+  { path: 'calculate-rbi', component: CalculateRbiComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'}
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent
+    HomePageComponent,
+    TopPlayersComponent,
+    CalculateRbiComponent
   ],
   imports: [
     RouterModule.forRoot(
