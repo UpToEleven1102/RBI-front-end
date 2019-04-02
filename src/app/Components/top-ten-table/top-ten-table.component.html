@@ -1,0 +1,68 @@
+<table mat-table [dataSource]="dataSource" class="top-ten-container mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+   <!-- RBI -->
+  <ng-container matColumnDef="rbi">
+    <th mat-header-cell *matHeaderCellDef> RBI </th>
+    <td mat-cell *matCellDef="let element"> {{element.rbi}} </td>
+  </ng-container>
+
+  <!-- Rush Yards -->
+  <ng-container matColumnDef="rush_yds">
+    <th mat-header-cell *matHeaderCellDef> Rush Yards </th>
+    <td mat-cell *matCellDef="let element"> {{element.rush_yds}} </td>
+  </ng-container>
+
+  <!-- Rush Attempt -->
+  <ng-container matColumnDef="rush_attempt">
+    <th mat-header-cell *matHeaderCellDef> Rush Attempts </th>
+    <td mat-cell *matCellDef="let element"> {{element.rush_attempt}} </td>
+  </ng-container>
+
+   <!-- Symbol Column -->
+  <ng-container matColumnDef="rec_yards">
+    <th mat-header-cell *matHeaderCellDef> Rec Yards </th>
+    <td mat-cell *matCellDef="let element"> {{element.rec_yards}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="catches">
+    <th mat-header-cell *matHeaderCellDef> Catches </th>
+    <td mat-cell *matCellDef="let element"> {{element.catches}} </td>
+  </ng-container>
+
+   <!-- Symbol Column -->
+  <ng-container matColumnDef="rush_td">
+    <th mat-header-cell *matHeaderCellDef> Rush TD </th>
+    <td mat-cell *matCellDef="let element"> {{element.rush_td}} </td>
+  </ng-container>
+
+     <!-- Symbol Column -->
+  <ng-container matColumnDef="rec_td">
+    <th mat-header-cell *matHeaderCellDef> Rec TD </th>
+    <td mat-cell *matCellDef="let element"> {{element.rec_td}} </td>
+  </ng-container>
+
+   <!-- Symbol Column -->
+  <ng-container matColumnDef="fumbles">
+    <th mat-header-cell *matHeaderCellDef> Fumbles </th>
+    <td mat-cell *matCellDef="let element"> {{element.fumbles}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
