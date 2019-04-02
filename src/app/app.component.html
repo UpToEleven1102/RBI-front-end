@@ -1,20 +1,26 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
+
   <h1> Welcome to {{ title }}!</h1>
-
   <h2> Project Description: </h2>
-  
- 
-    <ul>
-      <li>This software is a new self-contained product designed to allow a user to search for a college running back and obtain a rating on the quality of that running back. </li>
-      <li>The program will show the user how each running back ranks against other running backs.</li>
-    </ul>
+  <ul>
+    <li>This software is a new self-contained product designed to allow a user to search for a college running back and
+      obtain a rating on the quality of that running back. </li>
+    <li>The program will show the user how each running back ranks against other running backs.</li>
+  </ul>
 
-  </div>
-  <app-top-ten-table></app-top-ten-table>
+</div>
 
+<hr>
 
+<h3>Our Top Ten Players Page</h3>
+<app-top-ten-table></app-top-ten-table>
 
+<hr>
 
+<div class="mat-app-background basic-container">
+  <h3> Manual Running Back Index Calculation</h3>
+  <app-manual-rbi></app-manual-rbi>
+</div>
 
 <router-outlet></router-outlet>

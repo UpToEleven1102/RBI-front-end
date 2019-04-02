@@ -10,12 +10,22 @@ import { TopTenTableComponent } from './top-ten-table/top-ten-table.component';
 import { HttpClientModule } from '@angular/common/http';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ManualRbiComponent } from './manual-rbi/manual-rbi.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {DemoMaterialModule} from './material-module';
+import {MatNativeDateModule} from '@angular/material';
+import {FormGroup, FormControl} from '@angular/forms';
+
+
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopTenTableComponent
+    TopTenTableComponent,
+    ManualRbiComponent
   ],
   imports: [
     BrowserModule,
@@ -25,9 +35,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatSortModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
-    
-    
+    FormsModule,
+    ReactiveFormsModule,
+    DemoMaterialModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
