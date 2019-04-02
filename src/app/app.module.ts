@@ -4,7 +4,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatTableModule, MatFormField, MatFormFieldModule} from '@angular/material';
+import {MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatTableModule, MatFormField, MatFormFieldModule, MatInputModule} from '@angular/material';
 import {RouterModule, Routes} from '@angular/router';
 import { HomePageComponent } from './Pages/home-page/home-page.component';
 import { TopPlayersComponent } from './Pages/top-players/top-players.component';
@@ -45,7 +45,8 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    TextFieldModule
+    TextFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
