@@ -4,11 +4,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {MatButtonModule, MatIconModule, MatListModule, MatSidenavModule} from '@angular/material';
+import {MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatTableModule} from '@angular/material';
 import {RouterModule, Routes} from '@angular/router';
 import { HomePageComponent } from './Pages/home-page/home-page.component';
 import { TopPlayersComponent } from './Pages/top-players/top-players.component';
 import { CalculateRbiComponent } from './Pages/calculate-rbi/calculate-rbi.component';
+import { TopTenTableComponent } from './Components/top-ten-table/top-ten-table.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomePageComponent},
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
     AppComponent,
     HomePageComponent,
     TopPlayersComponent,
-    CalculateRbiComponent
+    CalculateRbiComponent,
+    TopTenTableComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
