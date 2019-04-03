@@ -4,7 +4,17 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatTableModule, MatFormField, MatFormFieldModule, MatInputModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatIconModule,
+  MatListModule,
+  MatSidenavModule,
+  MatTableModule,
+  MatFormField,
+  MatFormFieldModule,
+  MatInputModule,
+  MatDialogModule
+} from '@angular/material';
 import {RouterModule, Routes} from '@angular/router';
 import { HomePageComponent } from './Pages/home-page/home-page.component';
 import { TopPlayersComponent } from './Pages/top-players/top-players.component';
@@ -13,6 +23,9 @@ import { TopTenTableComponent } from './Components/top-ten-table/top-ten-table.c
 import { ManualRbiComponent } from './Components/manual-rbi/manual-rbi.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TextFieldModule } from '@angular/cdk/text-field';
+import { GraphQLModule } from './graphql.module';
+import { HttpClientModule } from '@angular/common/http';
+import { LoadingComponent } from "./Components/loading/loading.component";
 
 const appRoutes: Routes = [
   { path: 'home', component: TopPlayersComponent},
@@ -28,8 +41,10 @@ const appRoutes: Routes = [
     TopPlayersComponent,
     CalculateRbiComponent,
     TopTenTableComponent,
-    ManualRbiComponent
+    ManualRbiComponent,
+    LoadingComponent
   ],
+  entryComponents: [LoadingComponent],
   imports: [
     RouterModule.forRoot(
       appRoutes,
@@ -46,7 +61,10 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     TextFieldModule,
-    MatInputModule
+    MatInputModule,
+    GraphQLModule,
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
