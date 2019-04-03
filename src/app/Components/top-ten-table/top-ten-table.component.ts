@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from "@angular/material";
-import { LoadingComponent } from "../loading/loading.component";
-import { MainControllerService } from "../../Services/main-controller.service";
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { LoadingComponent } from '../loading/loading.component';
+import { MainControllerService } from '../../Services/main-controller.service';
+import { Player } from '../../Services/types';
+import gql from 'graphql-tag';
+import { Subscription } from 'rxjs';
+import { Apollo } from 'apollo-angular';
 
 export interface rb {
   position: number;
@@ -23,129 +27,6 @@ export interface PeriodicElement {
   symbol: string;
 }
 
-const ELEMENT_DATA: rb[] = [
-  {
-    position: 1,
-    name: '',
-    rbi: 0,
-    rush_yds: 0,
-    rush_attempt: 0,
-    rec_yds: 0,
-    catches: 0,
-    rush_td: 0,
-    rec_td: 0,
-    fumbles: 0
-  },
-  {
-    position: 2,
-    name: '',
-    rbi: 0,
-    rush_yds: 0,
-    rush_attempt: 0,
-    rec_yds: 0,
-    catches: 0,
-    rush_td: 0,
-    rec_td: 0,
-    fumbles: 0
-  },
-  {
-    position: 3,
-    name: '',
-    rbi: 0,
-    rush_yds: 0,
-    rush_attempt: 0,
-    rec_yds: 0,
-    catches: 0,
-    rush_td: 0,
-    rec_td: 0,
-    fumbles: 0
-  },
-  {
-    position: 4,
-    name: '',
-    rbi: 0,
-    rush_yds: 0,
-    rush_attempt: 0,
-    rec_yds: 0,
-    catches: 0,
-    rush_td: 0,
-    rec_td: 0,
-    fumbles: 0
-  },
-  {
-    position: 5,
-    name: '',
-    rbi: 0,
-    rush_yds: 0,
-    rush_attempt: 0,
-    rec_yds: 0,
-    catches: 0,
-    rush_td: 0,
-    rec_td: 0,
-    fumbles: 0
-  },
-  {
-    position: 6,
-    name: '',
-    rbi: 0,
-    rush_yds: 0,
-    rush_attempt: 0,
-    rec_yds: 0,
-    catches: 0,
-    rush_td: 0,
-    rec_td: 0,
-    fumbles: 0
-  },
-  {
-    position: 7,
-    name: '',
-    rbi: 0,
-    rush_yds: 0,
-    rush_attempt: 0,
-    rec_yds: 0,
-    catches: 0,
-    rush_td: 0,
-    rec_td: 0,
-    fumbles: 0
-  },
-  {
-    position: 8,
-    name: '',
-    rbi: 0,
-    rush_yds: 0,
-    rush_attempt: 0,
-    rec_yds: 0,
-    catches: 0,
-    rush_td: 0,
-    rec_td: 0,
-    fumbles: 0
-  },
-  {
-    position: 9,
-    name: '',
-    rbi: 0,
-    rush_yds: 0,
-    rush_attempt: 0,
-    rec_yds: 0,
-    catches: 0,
-    rush_td: 0,
-    rec_td: 0,
-    fumbles: 0
-  },
-  {
-    position: 10,
-    name: '',
-    rbi: 0,
-    rush_yds: 0,
-    rush_attempt: 0,
-    rec_yds: 0,
-    catches: 0,
-    rush_td: 0,
-    rec_td: 0,
-    fumbles: 0
-  },
-];
-
 
 @Component({
   selector: 'app-top-ten-table',
@@ -163,16 +44,55 @@ export class TopTenTableComponent implements OnInit {
 }
 */
 
-export class TopTenTableComponent {
+export class TopTenTableComponent implements OnInit {
   loading = true;
+  subscription: Subscription;
 
+  displayedColumns: string[] = ['image', 'name', 'rbi', 'team', 'rush_yds',
+    'rush_attempt', 'rec_yds', 'catches', 'rush_td', 'rec_td', 'fumbles'];
+  dataSource: Array<Player> = [];
 
-  displayedColumns: string[] = ['position', 'name', 'rbi', 'rush_yds', 'rush_attempt', 'rush_attempt', 'rec_yards', 'catches', 'rush_td', 'rec_td', 'fumbles'];
-  dataSource = ELEMENT_DATA;
-
-  constructor(private mainCtrl: MainControllerService) {
+  constructor(private mainCtrl: MainControllerService, private apollo: Apollo) {
     this.mainCtrl.openLoadingDialog();
   }
 
-
+  ngOnInit(): void {
+    this.subscription = this.apollo.watchQuery({
+      query: gql`
+        {
+          players(total: 10) {
+            id
+            name
+            team {
+              id
+              name
+              university_name
+              team_img
+            }
+            player_img
+            class
+            ht_wt
+            home_town
+            dob
+            stats {
+              id
+              year
+              rush_yds
+              rush_attempt
+              rec_yds
+              catches
+              rush_td
+              rec_td
+              fumbles
+            }
+          }
+        }
+      `
+    }).valueChanges.subscribe(result => {
+      this.dataSource = result.data.players;
+      console.log(this.dataSource);
+      this.mainCtrl.closeLoadingDialog();
+      this.subscription.unsubscribe();
+    });
+  }
 }
