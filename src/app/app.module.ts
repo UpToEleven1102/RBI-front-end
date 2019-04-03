@@ -4,16 +4,19 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatTableModule} from '@angular/material';
+import {MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatTableModule, MatFormField, MatFormFieldModule, MatInputModule} from '@angular/material';
 import {RouterModule, Routes} from '@angular/router';
 import { HomePageComponent } from './Pages/home-page/home-page.component';
 import { TopPlayersComponent } from './Pages/top-players/top-players.component';
 import { CalculateRbiComponent } from './Pages/calculate-rbi/calculate-rbi.component';
 import { TopTenTableComponent } from './Components/top-ten-table/top-ten-table.component';
+import { ManualRbiComponent } from './Components/manual-rbi/manual-rbi.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TextFieldModule } from '@angular/cdk/text-field';
 
 const appRoutes: Routes = [
-  { path: 'home', component: HomePageComponent},
-  { path: 'top-players', component: TopPlayersComponent},
+  { path: 'home', component: TopPlayersComponent},
+  { path: 'search', component: HomePageComponent},
   { path: 'calculate-rbi', component: CalculateRbiComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'}
 ]
@@ -24,7 +27,8 @@ const appRoutes: Routes = [
     HomePageComponent,
     TopPlayersComponent,
     CalculateRbiComponent,
-    TopTenTableComponent
+    TopTenTableComponent,
+    ManualRbiComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -38,6 +42,11 @@ const appRoutes: Routes = [
     MatIconModule,
     MatListModule,
     MatTableModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TextFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
