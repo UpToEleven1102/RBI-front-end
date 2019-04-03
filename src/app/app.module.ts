@@ -15,8 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TextFieldModule } from '@angular/cdk/text-field';
 
 const appRoutes: Routes = [
-  { path: 'home', component: HomePageComponent},
-  { path: 'top-players', component: TopPlayersComponent},
+  { path: 'home', component: TopPlayersComponent},
+  { path: 'search', component: HomePageComponent},
   { path: 'calculate-rbi', component: CalculateRbiComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'}
 ]
