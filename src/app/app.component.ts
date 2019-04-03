@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,13 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'RBI-front-end';
-  menuOpen = true;
+  menuOpen = false;
+
+  constructor(private router: Router) {
+
+  }
 
   toggleMenu = () => this.menuOpen = !this.menuOpen;
+
+  goToHome = () => this.router.navigateByUrl('/home');
 }
