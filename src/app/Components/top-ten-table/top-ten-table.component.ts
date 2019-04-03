@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from "@angular/material";
 import { LoadingComponent } from "../loading/loading.component";
+import { MainControllerService } from "../../Services/main-controller.service";
 
 export interface rb {
   position: number;
@@ -164,21 +165,14 @@ export class TopTenTableComponent implements OnInit {
 
 export class TopTenTableComponent {
   loading = true;
-  dialogRef: MatDialogRef<LoadingComponent, any>;
+
 
   displayedColumns: string[] = ['position', 'name', 'rbi', 'rush_yds', 'rush_attempt', 'rush_attempt', 'rec_yards', 'catches', 'rush_td', 'rec_td', 'fumbles'];
   dataSource = ELEMENT_DATA;
 
-  constructor(public dialog: MatDialog) {
-    this.openDialog()
+  constructor(private mainCtrl: MainControllerService) {
+    this.mainCtrl.openLoadingDialog();
   }
 
-  openDialog(): void {
-    this.dialogRef = this.dialog.open(LoadingComponent, {
-      width: '250px',
-    });
 
-    setTimeout(() => this.dialogRef.close(), 5000);
-
-  }
 }

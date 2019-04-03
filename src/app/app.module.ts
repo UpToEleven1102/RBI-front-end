@@ -13,7 +13,7 @@ import {
   MatFormField,
   MatFormFieldModule,
   MatInputModule,
-  MatDialogModule
+  MatDialogModule, MatProgressSpinnerModule
 } from '@angular/material';
 import {RouterModule, Routes} from '@angular/router';
 import { HomePageComponent } from './Pages/home-page/home-page.component';
@@ -64,7 +64,8 @@ const appRoutes: Routes = [
     MatInputModule,
     GraphQLModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
