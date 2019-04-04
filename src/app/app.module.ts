@@ -25,12 +25,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
-import { LoadingComponent } from "./Components/loading/loading.component";
+import { LoadingComponent } from './Components/loading/loading.component';
+import { PlayerPageComponent } from './Pages/player-page/player-page.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: TopPlayersComponent},
   { path: 'search', component: HomePageComponent},
   { path: 'calculate-rbi', component: CalculateRbiComponent},
+  { path: 'player/:id', component: PlayerPageComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'}
 ]
 
@@ -42,7 +44,8 @@ const appRoutes: Routes = [
     CalculateRbiComponent,
     TopTenTableComponent,
     ManualRbiComponent,
-    LoadingComponent
+    LoadingComponent,
+    PlayerPageComponent
   ],
   entryComponents: [LoadingComponent],
   imports: [

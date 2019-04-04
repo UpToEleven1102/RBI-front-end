@@ -36,4 +36,5 @@ export interface Player {
   home_town: string;
   dob: string;
   stats: Stat[];
+  rbi: number;
 }

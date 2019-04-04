@@ -17,7 +17,7 @@
   <!-- RBI -->
   <ng-container matColumnDef="rbi">
     <th mat-header-cell *matHeaderCellDef> RBI </th>
-    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.rbi?.toFixed(2)}} </td>
   </ng-container>
 
   <!-- Position Column -->
@@ -68,6 +68,11 @@
   <ng-container matColumnDef="fumbles">
     <th mat-header-cell *matHeaderCellDef> Fumbles </th>
     <td mat-cell *matCellDef="let element"> {{element.stats[0]?.fumbles}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let element"> <a routerLink="/player/{{element.id}}">Details</a></td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

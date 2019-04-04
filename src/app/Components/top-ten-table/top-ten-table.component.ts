@@ -49,7 +49,7 @@ export class TopTenTableComponent implements OnInit {
   subscription: Subscription;
 
   displayedColumns: string[] = ['image', 'name', 'rbi', 'team', 'rush_yds',
-    'rush_attempt', 'rec_yds', 'catches', 'rush_td', 'rec_td', 'fumbles'];
+    'rush_attempt', 'rec_yds', 'catches', 'rush_td', 'rec_td', 'fumbles', 'action'];
   dataSource: Array<Player> = [];
 
   constructor(private mainCtrl: MainControllerService, private apollo: Apollo) {
@@ -60,9 +60,10 @@ export class TopTenTableComponent implements OnInit {
     this.subscription = this.apollo.watchQuery<any>({
       query: gql`
         {
-          players(total: 10) {
+          topPlayers{
             id
             name
+            rbi
             team {
               id
               name
@@ -89,7 +90,7 @@ export class TopTenTableComponent implements OnInit {
         }
       `
     }).valueChanges.subscribe(result => {
-      this.dataSource = result.data.players;
+      this.dataSource = result.data.topPlayers;
       this.mainCtrl.closeLoadingDialog();
       this.subscription.unsubscribe();
     });
