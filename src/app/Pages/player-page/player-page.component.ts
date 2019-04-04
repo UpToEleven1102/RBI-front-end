@@ -63,6 +63,7 @@ export class PlayerPageComponent implements OnInit, OnDestroy {
               rush_td
               rec_td
               fumbles
+              rbi
             }
           }
         }

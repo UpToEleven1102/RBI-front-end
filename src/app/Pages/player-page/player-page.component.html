@@ -24,6 +24,7 @@
       <table style="width: 100%; margin-top: 50px;">
         <tr>
           <th>year</th>
+          <th>rbi</th>
           <th>rush_yds</th>
           <th>rush_td</th>
           <th>rec_yds</th>
@@ -34,6 +35,7 @@
         <tr *ngFor="let stat of player.stats">
           <td style="text-align: center;">{{stat.year}}</td>
           <td style="text-align: center;">{{stat.rush_yds}}</td>
+          <td style="text-align: center;">{{stat.rbi?.toFixed(2)}}</td>
           <td style="text-align: center;">{{stat.rush_td}}</td>
           <td style="text-align: center;">{{stat.rec_yds}}</td>
           <td style="text-align: center;">{{stat.rec_td}}</td>

@@ -24,6 +24,7 @@ export interface Stat {
   rush_td: number;
   rec_td: number;
   fumbles: number;
+  rbi: number;
 }
 
 export interface Player {
