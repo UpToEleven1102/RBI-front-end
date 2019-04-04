@@ -57,7 +57,7 @@ export class TopTenTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.subscription = this.apollo.watchQuery({
+    this.subscription = this.apollo.watchQuery<any>({
       query: gql`
         {
           players(total: 10) {
@@ -90,7 +90,6 @@ export class TopTenTableComponent implements OnInit {
       `
     }).valueChanges.subscribe(result => {
       this.dataSource = result.data.players;
-      console.log(this.dataSource);
       this.mainCtrl.closeLoadingDialog();
       this.subscription.unsubscribe();
     });
