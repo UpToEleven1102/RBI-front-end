@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import gql from 'graphql-tag';
+import { Subscription } from 'rxjs';
+import { Apollo } from 'apollo-angular';
+import { MainControllerService } from "../../Services/main-controller.service";
 
 @Component({
   selector: 'app-home-page',
@@ -6,18 +10,58 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  data = [{
-      name: 'Pla342'
-    },{
-      name: 'Player 3'
-    },{
-      name: 'Player 1'
-    }
-  ]
-
-  constructor() { }
+  data = []
+  searchText = '';
+  subscription = Subscription;
+  loading = false;
+  searched = false;
+  constructor(private apollo: Apollo, private mainCtrl: MainControllerService) {
+  }
 
   ngOnInit() {
   }
 
+  onSearchChange(text) {
+    this.searched = true;
+    if (text.length > 3) {
+      this.loading = true;
+      this.apollo.watchQuery<any>({
+        query: gql`
+          {
+            players(filter: "${text}"){
+              id
+              name
+              rbi
+              team {
+                id
+                name
+                university_name
+                team_img
+              }
+              player_img
+              class
+              ht_wt
+              home_town
+              dob
+              stats {
+                id
+                year
+                rush_yds
+                rush_attempt
+                rec_yds
+                catches
+                rush_td
+                rec_td
+                fumbles
+              }
+            }
+          }
+        `
+      }).valueChanges.subscribe(result => {
+        this.data = result.data.players;
+        console.log(this.data)
+        this.loading = false;
+      });
+    }
+  }
 }

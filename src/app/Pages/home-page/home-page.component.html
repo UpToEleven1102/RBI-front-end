@@ -1,8 +1,27 @@
-<div style="display: flex; justify-content: center; align-items: center;">
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column">
   <form style="margin: auto">
     <p>Please enter the name of the player to get RBI</p>
     <mat-form-field>
-      <input matInput placeholder="Player Name" />
+      <input matInput placeholder="Player Name" (input)="onSearchChange($event.target.value)"/>
     </mat-form-field>
   </form>
+
+  <div *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="!loading">
+    <div *ngIf="data.length === 0 && searched">No players found!</div>
+    <div *ngIf="data.length > 0">
+      <table>
+        <tr><th>Picture</th><th>Name</th><th>RBI</th><th>Team</th><th>Action</th></tr>
+        <tr style="height: 100px;" *ngFor="let player of data">
+          <td><img src="{{player.player_img}}" /> </td>
+          <td>{{player.name}}</td>
+          <td>{{player.rbi?.toFixed(2)}}</td>
+          <td><a routerLink="/team/{{player.team.id}}">{{player.team.name}} - {{player.team.university_name}}</a></td>
+          <td><a routerLink="/player/{{player.id}}">Details</a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
