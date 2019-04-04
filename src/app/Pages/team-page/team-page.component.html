@@ -1,3 +1,70 @@
-<p>
-  team-page works!
-</p>
+<div style="padding-left: 100px; padding-right: 100px;">
+  <div *ngIf="loading" style="min-height: 500px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="team" style="width: 100%; display: inline-block; position: relative;">
+    <div style="display: flex; flex-direction: row">
+      <img src="{{team.team_img}}" style="height: 150px;" />
+      <div style="width: 50%;">
+        <h1>{{team.name}}<p>{{team.university_name}}</p></h1>
+        <a routerLink="/conference/{{team.conference.id}}"  style="display: flex; flex-direction: row;">
+          <p>{{team.conference.name}} - {{team.conference.nick_name}}</p>
+        </a>
+      </div>
+    </div>
+
+
+
+    <div *ngIf="players && players.length > 0">
+      <table mat-table [dataSource]="players" class="container mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <ng-container matColumnDef="image">
+          <th mat-header-cell *matHeaderCellDef> Picture </th>
+          <td mat-cell *matCellDef="let element"> <img style="height: 100px" src="{{element.player_img}}"/> </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- RBI -->
+        <ng-container matColumnDef="rbi">
+          <th mat-header-cell *matHeaderCellDef> RBI </th>
+          <td mat-cell *matCellDef="let element"> {{element.rbi?.toFixed(2)}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="class">
+          <th mat-header-cell *matHeaderCellDef> Class </th>
+          <td mat-cell *matCellDef="let element"> {{element.class}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dob">
+          <th mat-header-cell *matHeaderCellDef> DOB </th>
+          <td mat-cell *matCellDef="let element"> {{element.dob}} </td>
+        </ng-container>
+        <ng-container matColumnDef="home_town">
+          <th mat-header-cell *matHeaderCellDef> Home Town </th>
+          <td mat-cell *matCellDef="let element"> {{element.home_town}} </td>
+        </ng-container>
+        <ng-container matColumnDef="ht_wt">
+          <th mat-header-cell *matHeaderCellDef> HT/WT </th>
+          <td mat-cell *matCellDef="let element"> {{element.ht_wt}} </td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef> Action</th>
+          <td mat-cell *matCellDef="let element"><a routerLink="/player/{{element.id}}">Details</a>  </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+    </div>
+  </div>
+</div>
+
