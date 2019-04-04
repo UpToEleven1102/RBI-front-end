@@ -27,12 +27,14 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingComponent } from './Components/loading/loading.component';
 import { PlayerPageComponent } from './Pages/player-page/player-page.component';
+import { TeamPageComponent } from "./Pages/team-page/team-page.component";
 
 const appRoutes: Routes = [
   { path: 'home', component: TopPlayersComponent},
   { path: 'search', component: HomePageComponent},
   { path: 'calculate-rbi', component: CalculateRbiComponent},
   { path: 'player/:id', component: PlayerPageComponent},
+  { path: 'team/:id', component: TeamPageComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'}
 ]
 
@@ -45,7 +47,8 @@ const appRoutes: Routes = [
     TopTenTableComponent,
     ManualRbiComponent,
     LoadingComponent,
-    PlayerPageComponent
+    PlayerPageComponent,
+    TeamPageComponent
   ],
   entryComponents: [LoadingComponent],
   imports: [

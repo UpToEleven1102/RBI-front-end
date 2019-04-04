@@ -2,14 +2,46 @@
   <div *ngIf="loading" style="min-height: 500px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
     <mat-spinner></mat-spinner>
   </div>
-  <div *ngIf="player" style="width: 100%; display: block;">
-      <div>
-        <img src="{{player.player_img}}" style="height: 150px;" />
+  <div *ngIf="player" style="width: 100%; display: inline-block; position: relative;">
+    <div style="display: flex; flex-direction: row">
+      <img src="{{player.player_img}}" style="height: 150px;" />
+      <div style="width: 50%;">
         <h1>{{player.name}}</h1>
+          <a routerLink="/team/{{player.team.id}}"  style="display: flex; flex-direction: row;">
+            <img style="height: 50px;" src="{{player.team.team_img}}"/>
+            <p>{{player.team.name}} - {{player.team.university_name}}</p>
+          </a>
       </div>
       <div>
-
+        <p *ngIf="player.dob">DOB: {{player.dob}}</p>
+        <p *ngIf="player.class">Class: {{player.class}}</p>
+        <p *ngIf="player.home_town">Home Town: {{player.home_town}}</p>
+        <p *ngIf="player.ht_wt">HT/WT: {{player.ht_wt}}</p>
       </div>
+    </div>
+
+    <div *ngIf="player.stats && player.stats.length > 0">
+      <table style="width: 100%; margin-top: 50px;">
+        <tr>
+          <th>year</th>
+          <th>rush_yds</th>
+          <th>rush_td</th>
+          <th>rec_yds</th>
+          <th>rec_td</th>
+          <th>catches</th>
+          <th>fumble</th>
+        </tr>
+        <tr *ngFor="let stat of player.stats">
+          <td style="text-align: center;">{{stat.year}}</td>
+          <td style="text-align: center;">{{stat.rush_yds}}</td>
+          <td style="text-align: center;">{{stat.rush_td}}</td>
+          <td style="text-align: center;">{{stat.rec_yds}}</td>
+          <td style="text-align: center;">{{stat.rec_td}}</td>
+          <td style="text-align: center;">{{stat.catches}}</td>
+          <td style="text-align: center;">{{stat.fumbles}}</td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>
 

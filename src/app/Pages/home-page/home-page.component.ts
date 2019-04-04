@@ -22,8 +22,9 @@ export class HomePageComponent implements OnInit {
   }
 
   onSearchChange(text) {
-    this.searched = true;
     if (text.length > 3) {
+      this.searched = true;
+
       this.loading = true;
       this.apollo.watchQuery<any>({
         query: gql`
