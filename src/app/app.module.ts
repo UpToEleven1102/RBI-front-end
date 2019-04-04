@@ -28,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoadingComponent } from './Components/loading/loading.component';
 import { PlayerPageComponent } from './Pages/player-page/player-page.component';
 import { TeamPageComponent } from "./Pages/team-page/team-page.component";
+import { ConferencePageComponent } from "./Pages/conference-page/conference-page.component";
 
 const appRoutes: Routes = [
   { path: 'home', component: TopPlayersComponent},
@@ -35,6 +36,7 @@ const appRoutes: Routes = [
   { path: 'calculate-rbi', component: CalculateRbiComponent},
   { path: 'player/:id', component: PlayerPageComponent},
   { path: 'team/:id', component: TeamPageComponent},
+  { path: 'conference/:id', component: ConferencePageComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'}
 ]
 
@@ -48,7 +50,8 @@ const appRoutes: Routes = [
     ManualRbiComponent,
     LoadingComponent,
     PlayerPageComponent,
-    TeamPageComponent
+    TeamPageComponent,
+    ConferencePageComponent
   ],
   entryComponents: [LoadingComponent],
   imports: [

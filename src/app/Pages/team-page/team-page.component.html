@@ -6,7 +6,7 @@
     <div style="display: flex; flex-direction: row">
       <img src="{{team.team_img}}" style="height: 150px;" />
       <div style="width: 50%;">
-        <h1>{{team.name}}<p>{{team.university_name}}</p></h1>
+        <h1>{{team.name}}</h1><h2>University: {{team.university_name}}</h2>
         <a routerLink="/conference/{{team.conference.id}}"  style="display: flex; flex-direction: row;">
           <p>{{team.conference.name}} - {{team.conference.nick_name}}</p>
         </a>

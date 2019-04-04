@@ -4,6 +4,7 @@ export interface Conference {
   nick_name: string;
   founded: number;
   member_number: number;
+  teams: Team[];
 }
 
 export interface Team {
