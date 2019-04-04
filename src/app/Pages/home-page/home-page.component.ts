@@ -22,7 +22,7 @@ export class HomePageComponent implements OnInit {
   }
 
   onSearchChange(text) {
-    if (text.length > 3) {
+    if (text.length > 1) {
       this.searched = true;
 
       this.loading = true;
