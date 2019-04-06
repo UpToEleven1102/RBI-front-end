@@ -13,7 +13,7 @@ import {
   MatFormField,
   MatFormFieldModule,
   MatInputModule,
-  MatDialogModule, MatProgressSpinnerModule, MatGridListModule
+  MatDialogModule, MatProgressSpinnerModule, MatGridListModule, MatCardModule
 } from '@angular/material';
 import {RouterModule, Routes} from '@angular/router';
 import { HomePageComponent } from './Pages/home-page/home-page.component';
@@ -29,15 +29,17 @@ import { LoadingComponent } from './Components/loading/loading.component';
 import { PlayerPageComponent } from './Pages/player-page/player-page.component';
 import { TeamPageComponent } from "./Pages/team-page/team-page.component";
 import { ConferencePageComponent } from "./Pages/conference-page/conference-page.component";
+import { MainPageComponent } from "./Pages/main-page/main-page.component";
 
 const appRoutes: Routes = [
-  { path: 'home', component: TopPlayersComponent},
+  { path: 'top-players', component: TopPlayersComponent},
+  { path: 'main', component: MainPageComponent},
   { path: 'search', component: HomePageComponent},
   { path: 'calculate-rbi', component: CalculateRbiComponent},
   { path: 'player/:id', component: PlayerPageComponent},
   { path: 'team/:id', component: TeamPageComponent},
   { path: 'conference/:id', component: ConferencePageComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full'}
+  { path: '', redirectTo: '/main', pathMatch: 'full'}
 ]
 
 @NgModule({
@@ -51,7 +53,8 @@ const appRoutes: Routes = [
     LoadingComponent,
     PlayerPageComponent,
     TeamPageComponent,
-    ConferencePageComponent
+    ConferencePageComponent,
+    MainPageComponent
   ],
   entryComponents: [LoadingComponent],
   imports: [
@@ -75,7 +78,9 @@ const appRoutes: Routes = [
     HttpClientModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    MatGridListModule
+    MatGridListModule,
+    MatCardModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

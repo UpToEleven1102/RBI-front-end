@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
 })
 export class AppComponent {
   title = 'RBI-front-end';
-  menuOpen = false;
+  menuOpen = true;
 
   constructor(private router: Router) {
 
@@ -16,5 +16,5 @@ export class AppComponent {
 
   toggleMenu = () => this.menuOpen = !this.menuOpen;
 
-  goToHome = () => this.router.navigateByUrl('/home');
+  goToHome = () => this.router.navigateByUrl('/main');
 }

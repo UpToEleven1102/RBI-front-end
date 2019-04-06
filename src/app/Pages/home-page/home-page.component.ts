@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import gql from 'graphql-tag';
-import { Subscription } from 'rxjs';
 import { Apollo } from 'apollo-angular';
-import { MainControllerService } from "../../Services/main-controller.service";
+import { MainControllerService } from '../../Services/main-controller.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -12,7 +12,7 @@ import { MainControllerService } from "../../Services/main-controller.service";
 export class HomePageComponent implements OnInit {
   data = []
   searchText = '';
-  subscription = Subscription;
+  subscription: Subscription;
   loading = false;
   searched = false;
   constructor(private apollo: Apollo, private mainCtrl: MainControllerService) {
@@ -26,7 +26,7 @@ export class HomePageComponent implements OnInit {
       this.searched = true;
 
       this.loading = true;
-      this.apollo.watchQuery<any>({
+      this.subscription = this.apollo.watchQuery<any>({
         query: gql`
           {
             players(filter: "${text}"){
@@ -62,6 +62,7 @@ export class HomePageComponent implements OnInit {
         this.data = result.data.players;
         console.log(this.data)
         this.loading = false;
+        this.subscription.unsubscribe();
       });
     }
   }

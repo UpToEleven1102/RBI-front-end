@@ -3,12 +3,27 @@
 
   <h1> Welcome to {{ title }}!</h1>
   <h2> Project Description: </h2>
-  <ul>
-    <li>This software is a new self-contained product designed to allow a user to search for a college running back and
-      obtain a rating on the quality of that running back. </li>
-    <li>The program will show the user how each running back ranks against other running backs.</li>
-  </ul>
+  <div>
+    <p>This software is a new self-contained product designed to allow a user to search for a college running back and
+      obtain a rating on the quality of that running back. </p>
+    <p>The program will show the user how each running back ranks against other running backs.</p>
+  </div>
 
 </div>
-<app-home-page></app-home-page>
+
 <hr>
+
+<div style="text-align: center;">
+  <h2>All Conferences:</h2>
+</div>
+<div style="display: flex;justify-content: space-around; min-width: 300px; flex-wrap: wrap">
+  <mat-spinner *ngIf="loading"></mat-spinner>
+  <mat-card *ngFor="let conference of data" style="width: 20%; margin: 20px;">
+    <mat-card-content>
+      <a routerLink="/conference/{{conference.id}}" style="text-decoration: none">
+        <h1>{{conference.name}}</h1>
+        <p>{{conference.nick_name}}</p>
+      </a>
+    </mat-card-content>
+  </mat-card>
+</div>
