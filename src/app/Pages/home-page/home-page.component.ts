@@ -24,7 +24,9 @@ export class HomePageComponent implements OnInit {
   onSearchChange(text) {
     if (text.length > 1) {
       this.searched = true;
-
+      if (this.subscription) {
+        this.subscription.unsubscribe();
+      }
       this.loading = true;
       this.subscription = this.apollo.watchQuery<any>({
         query: gql`
