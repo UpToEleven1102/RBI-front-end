@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calculate-rbi.component.scss']
 })
 export class CalculateRbiComponent implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit() {

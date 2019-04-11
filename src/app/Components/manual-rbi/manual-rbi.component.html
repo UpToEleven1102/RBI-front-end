@@ -1,55 +1,96 @@
 <form [formGroup]="rbiForm" (ngSubmit)="onSubmit()" novalidate>
-      <mat-form-field>
-            <mat-label>Rush Yards</mat-label>
-            <textarea matInput formControlName='manual_rush_yards'></textarea>
-      </mat-form-field>
+  <mat-form-field>
+    <mat-label>Rush Yards</mat-label>
+    <textarea
+      matInput
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="5"
+      formControlName="manual_rush_yards"
+    ></textarea>
+  </mat-form-field>
 
-      <mat-form-field>
-            <mat-label>Rec Yards</mat-label>
-            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-                  cdkAutosizeMaxRows="5" formControlName="manual_rec_yards"></textarea>
-      </mat-form-field>
+  <mat-form-field>
+    <mat-label>Rec Yards</mat-label>
+    <textarea
+      matInput
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="5"
+      formControlName="manual_rec_yards"
+    ></textarea>
+  </mat-form-field>
 
+  <mat-form-field>
+    <mat-label>Rush Attempts</mat-label>
+    <textarea
+      matInput
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="5"
+      formControlName="manual_rush_attempts"
+    ></textarea>
+  </mat-form-field>
 
-      <mat-form-field>
-            <mat-label>Rush Attempts</mat-label>
-            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-                  cdkAutosizeMaxRows="5" formControlName="manual_rush_attempts"></textarea>
-      </mat-form-field>
+  <mat-form-field>
+    <mat-label>Catches</mat-label>
+    <textarea
+      matInput
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="5"
+      formControlName="manual_catches"
+    ></textarea>
+  </mat-form-field>
 
+  <mat-form-field>
+    <mat-label>Rush Tds</mat-label>
+    <textarea
+      matInput
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="5"
+      formControlName="manual_rush_tds"
+    ></textarea>
+  </mat-form-field>
 
+  <mat-form-field>
+    <mat-label>Reciving Tds</mat-label>
+    <textarea
+      matInput
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="5"
+      formControlName="manual_rec_tds"
+    ></textarea>
+  </mat-form-field>
 
-      <mat-form-field>
-            <mat-label>Catches</mat-label>
-            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-                  cdkAutosizeMaxRows="5" formControlName="manual_catches"></textarea>
-      </mat-form-field>
+  <mat-form-field>
+    <mat-label>Fumbles</mat-label>
+    <textarea
+      matInput
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="5"
+      formControlName="manual_fumbles"
+    ></textarea>
+  </mat-form-field>
 
+  <div style="text-align:center">
+    <button type="submit">Submit</button>
 
-      <mat-form-field>
-            <mat-label>Rush Tds</mat-label>
-            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-                  cdkAutosizeMaxRows="5" formControlName="manual_rush_tds"></textarea>
-      </mat-form-field>
-
-
-      <mat-form-field>
-            <mat-label>Reciving Tds</mat-label>
-            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-                  cdkAutosizeMaxRows="5" formControlName="manual_rec_tds"></textarea>
-      </mat-form-field>
-
-
-      <mat-form-field>
-            <mat-label>Fumbles</mat-label>
-            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-                  cdkAutosizeMaxRows="5" formControlName="manual_fumbles"></textarea>
-      </mat-form-field>
-
-      <button type="submit">Submit</button>
-
-      <p style='text-align: center; text-decoration: underline'>
-           Calculated RBI Rating is: 
-           {{ this.rbiForm.get('rbi').value }}
-      </p>
+    <button type="reset">Reset</button>
+  </div>
+  
+  <p style="text-align: center; text-decoration: underline">
+    Calculated RBI Rating is:
+    {{ this.rbiForm.get("rbi").value }}
+  </p>
 </form>
