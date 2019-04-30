@@ -1,6 +1,6 @@
 ## Link:
 
-https://uptoeleven1102.github.io/RBI-node-backend/main
+https://uptoeleven1102.github.io/RBI-node-backend
 
 ## Requirements:
 
